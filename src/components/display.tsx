@@ -1,7 +1,7 @@
 function Display(){
     return(
-        <div className="w-80 h-20">
-            <div className="h-10 w-80">
+        <div className="w-80 h-auto">
+            <div className="h-5 w-80">
 
             </div>
             <div className="w-80 h-10">
