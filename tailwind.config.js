@@ -6,7 +6,6 @@ export default {
     "./src/components/display.tsx",
     "./src/components/keys.tsx",
     "./src/layout/screen.tsx"
-
   ],
   theme: {
     extend: {},
