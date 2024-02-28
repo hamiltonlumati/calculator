@@ -127,10 +127,10 @@ function Screen(){
     return(
         <div className="w-auto place-content-center h-auto bg-black p-2">
             <div className="w-80 h-auto">
-                <div className="h-5 w-80">
+                <div className="h-5 w-80 text-yellow-100">
                     {state.operation}
                 </div>
-                <div className="w-80 h-10">
+                <div className="w-80 h-10 text-yellow-100">
 
                 </div>
 
