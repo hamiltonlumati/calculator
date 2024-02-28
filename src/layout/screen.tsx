@@ -6,7 +6,7 @@ interface State{
     operations: string[]
 }
 
-type Action = {type: '1'} | {type: '2'} | {type: '3'} | {type: '4'} | {type: '5'} | {type: '6'} | {type: '7'} | {type: '8'} | {type: '9'} | {type: '0'} | {type: '+'} | {type: '*'} | {type: '/'} | {type: '-'};
+type Action = {type: '1'} | {type: '2'} | {type: '3'} | {type: '4'} | {type: '5'} | {type: '6'} | {type: '7'} | {type: '8'} | {type: '9'} | {type: '0'} | {type: '+'} | {type: '*'} | {type: '/'} | {type: '-'} | {type: '.'};
 
 const reducer = (state: State, action: Action): State =>{
     switch (action.type){
@@ -108,6 +108,13 @@ const reducer = (state: State, action: Action): State =>{
                 operations: state.operations
             }
         
+        case '.':
+            return{
+                operation: state.operation+'.',
+                numbers: state.numbers,
+                operations: state.operations
+            }
+        
     }
 }
 
@@ -116,7 +123,7 @@ function Screen(){
     const initialState: State = {operation: '', numbers: [], operations: []};
 
     const [state, dispatch] = useReducer(reducer, initialState);
-    
+
     return(
         <div className="w-auto place-content-center h-auto bg-black p-2">
             <div className="w-80 h-auto">
@@ -132,22 +139,22 @@ function Screen(){
                 <span className="flex flex-wrap w-60">
                     <button className="w-40 h-16 flex-none bg-white align-top border">AC</button>
                     <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '/' })}}>/</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border">7</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border">8</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border">9</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border">4</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border">5</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border">6</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border">1</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border">2</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border">3</button>
-                    <button className="w-40 h-16 flex-none bg-white align-top border">0</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border">.</button>
+                    <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '7' })}}>7</button>
+                    <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '8' })}}>8</button>
+                    <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '9' })}}>9</button>
+                    <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '4' })}}>4</button>
+                    <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '5' })}}>5</button>
+                    <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '6' })}}>6</button>
+                    <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '1' })}}>1</button>
+                    <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '2' })}}>2</button>
+                    <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '3' })}}>3</button>
+                    <button className="w-40 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '4' })}}>0</button>
+                    <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '.' })}}>.</button>
                 </span>
                 <span className="flex flex-col w-20 flex-wrap">
-                    <button className="block w-20 h-16 flex-none bg-white align-top border">x</button>
-                    <button className="block w-20 h-16 flex-none bg-white align-top border">-</button>
-                    <button className="block w-20 h-16 flex-none bg-white align-top border">+</button>
+                    <button className="block w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '*' })}}>x</button>
+                    <button className="block w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '-' })}}>-</button>
+                    <button className="block w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '+' })}}>+</button>
                     <button className="block w-20 h-32 flex-none bg-white align-top border">=</button>
                 </span>
             </div>
