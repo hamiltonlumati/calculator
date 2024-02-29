@@ -6,10 +6,18 @@ interface State{
     operations: string[]
 }
 
-type Action = {type: '1'} | {type: '2'} | {type: '3'} | {type: '4'} | {type: '5'} | {type: '6'} | {type: '7'} | {type: '8'} | {type: '9'} | {type: '0'} | {type: '+'} | {type: '*'} | {type: '/'} | {type: '-'} | {type: '.'};
+type Action = {type: 'AC'} | {type: '1'} | {type: '2'} | {type: '3'} | {type: '4'} | {type: '5'} | {type: '6'} | {type: '7'} | {type: '8'} | {type: '9'} | {type: '0'} | {type: '+'} | {type: '*'} | {type: '/'} | {type: '-'} | {type: '.'};
 
 const reducer = (state: State, action: Action): State =>{
+    var operationLenght: number = state.operation.length;
     switch (action.type){
+        case 'AC':
+            return{
+                operation: '',
+                numbers: [],
+                operations: []
+            }
+
         case '1':
             return{
                 operation: state.operation+'1',
@@ -74,6 +82,7 @@ const reducer = (state: State, action: Action): State =>{
             }
             
         case '0':
+            
             return{
                 operation: state.operation+'0',
                 numbers: state.numbers,
@@ -81,6 +90,13 @@ const reducer = (state: State, action: Action): State =>{
             }
 
         case '+':
+            if(operationLenght == 0 || state.operation[operationLenght-1] == '/' || state.operation[operationLenght-1] == '+' || state.operation[operationLenght-1] == '-' || state.operation[operationLenght-1] == '*'){
+                return{
+                    operation: state.operation,
+                    numbers: state.numbers,
+                    operations: state.operations
+                }
+            }
             return{
                 operation: state.operation+'+',
                 numbers: state.numbers,
@@ -88,6 +104,13 @@ const reducer = (state: State, action: Action): State =>{
             }
         
         case '-':
+            if(operationLenght == 0 || state.operation[operationLenght-1] == '/' || state.operation[operationLenght-1] == '+' || state.operation[operationLenght-1] == '-' || state.operation[operationLenght-1] == '*'){
+                return{
+                    operation: state.operation,
+                    numbers: state.numbers,
+                    operations: state.operations
+                }
+            }
             return{
                 operation: state.operation+'-',
                 numbers: state.numbers,
@@ -95,6 +118,13 @@ const reducer = (state: State, action: Action): State =>{
             }
 
         case '/':
+            if(operationLenght == 0 || state.operation[operationLenght-1] == '/' || state.operation[operationLenght-1] == '+' || state.operation[operationLenght-1] == '-' || state.operation[operationLenght-1] == '*'){
+                return{
+                    operation: state.operation,
+                    numbers: state.numbers,
+                    operations: state.operations
+                }
+            }
             return{
                 operation: state.operation+'/',
                 numbers: state.numbers,
@@ -102,6 +132,13 @@ const reducer = (state: State, action: Action): State =>{
             }
 
         case '*':
+            if(operationLenght == 0 || state.operation[operationLenght-1] == '/' || state.operation[operationLenght-1] == '+' || state.operation[operationLenght-1] == '-' || state.operation[operationLenght-1] == '*'){
+                return{
+                    operation: state.operation,
+                    numbers: state.numbers,
+                    operations: state.operations
+                }
+            }
             return{
                 operation: state.operation+'*',
                 numbers: state.numbers,
@@ -109,6 +146,13 @@ const reducer = (state: State, action: Action): State =>{
             }
         
         case '.':
+            if(operationLenght == 0 || state.operation[operationLenght-1] == '/' || state.operation[operationLenght-1] == '+' || state.operation[operationLenght-1] == '-' || state.operation[operationLenght-1] == '*' || state.operation[operationLenght] == '.'){
+                return{
+                    operation: state.operation,
+                    numbers: state.numbers,
+                    operations: state.operations
+                }
+            }
             return{
                 operation: state.operation+'.',
                 numbers: state.numbers,
@@ -137,7 +181,7 @@ function Screen(){
             </div>
             <div className="flex flex-wrap">
                 <span className="flex flex-wrap w-60">
-                    <button className="w-40 h-16 flex-none bg-white align-top border">AC</button>
+                    <button className="w-40 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: 'AC' })}}>AC</button>
                     <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '/' })}}>/</button>
                     <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '7' })}}>7</button>
                     <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '8' })}}>8</button>
