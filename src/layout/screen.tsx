@@ -192,7 +192,7 @@ function Screen(){
                     <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '1' })}}>1</button>
                     <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '2' })}}>2</button>
                     <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '3' })}}>3</button>
-                    <button className="w-40 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '4' })}}>0</button>
+                    <button className="w-40 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '0' })}}>0</button>
                     <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '.' })}}>.</button>
                 </span>
                 <span className="flex flex-col w-20 flex-wrap">
