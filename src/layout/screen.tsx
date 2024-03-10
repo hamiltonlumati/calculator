@@ -250,9 +250,9 @@ const reducer = (state: State, action: Action): State =>{
             }
             if(state.result != ''){
                 state.operation = state.result;
-                state.operations.push(0);
+                state.operations.push(2);
             }else if(state.operation.length > 0){
-                state.operations.push(0);
+                state.operations.push(2);
                 state.numbers.push(parseFloat(state.number));    
             }
             return{
