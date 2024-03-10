@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-
+import "math-from-string";
 interface State{
     operation: string,
     numbers: number[],
@@ -131,6 +131,7 @@ const reducer = (state: State, action: Action): State =>{
             state.operations.push(0);
             state.numbers.push(parseFloat(state.number));
             console.log(state.numbers);
+            console.log(state.number);
             return{
                 operation: state.operation+'-',
                 number: '-',
@@ -191,33 +192,35 @@ const reducer = (state: State, action: Action): State =>{
             }
 
         case '=':
+            state.numbers.push(parseFloat(state.number));
+            console.log(state.numbers);
             let auxiliar: number = 0;
             for(let i = 0; i<state.operations.length; i++){
-                if(state.operations.length > 0){
-                    switch (state.operations[i]){
-                        case 1:
-                            auxiliar = state.numbers[i-1]*state.numbers[i];
-                            state.numbers[i-1] = auxiliar;
-                            state.numbers.splice(i, 0);
-                            state.operations.splice(i, 0);
-                            i = 0;
-                            auxiliar = 0;
-                            break;
-    
-                        case 2:
-                            auxiliar = state.numbers[i-1]/state.numbers[i];
-                            state.numbers[i-1] = auxiliar;
-                            state.numbers.splice(i, 0);
-                            state.operations.splice(i, 0);
-                            i = 0;
-                            auxiliar = 0;
-                    }
+                switch (state.operations[i]){
+                    case 1:
+                        auxiliar = state.numbers[i-1]*state.numbers[i];
+                        state.numbers[i-1] = auxiliar;
+                        state.numbers.splice(i, 1);
+                        state.operations.splice(i, 1);
+                        i = 0;
+                        auxiliar = 0;
+                        break;
+
+                    case 2:
+                        auxiliar = state.numbers[i-1]/state.numbers[i];
+                        state.numbers[i-1] = auxiliar;
+                        state.numbers.splice(i, 1);
+                        state.operations.splice(i, 1);
+                        i = 0;
+                        auxiliar = 0;
                 }
             }
             for(let i = 0; i<state.numbers.length; i++){
+                console.log(state.numbers);
                 if(state.numbers.length > 1){
                     auxiliar = state.numbers[i] + state.numbers[i+1];
-                    state.numbers.splice(i+1, 0);
+                    state.numbers[i] = auxiliar;
+                    state.numbers.splice(i+1, 1);
                     i=0;
                 }
             }
