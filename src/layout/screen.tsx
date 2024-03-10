@@ -1,5 +1,4 @@
 import { useReducer } from "react";
-import "math-from-string";
 interface State{
     operation: string,
     numbers: number[],
