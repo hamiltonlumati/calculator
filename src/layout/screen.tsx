@@ -10,6 +10,7 @@ interface State{
 
 type Action = {type: 'AC'} | {type: '='} | {type: '1'} | {type: '2'} | {type: '3'} | {type: '4'} | {type: '5'} | {type: '6'} | {type: '7'} | {type: '8'} | {type: '9'} | {type: '0'} | {type: '+'} | {type: '*'} | {type: '/'} | {type: '-'} | {type: '.'};
 
+
 const reducer = (state: State, action: Action): State =>{
     var operationLenght: number = state.operation.length;
     switch (action.type){
@@ -23,6 +24,11 @@ const reducer = (state: State, action: Action): State =>{
             }
 
         case '1':
+            if(state.result != ''){
+                state.operation = '';
+                state.number = '';
+                state.numbers = [];
+            }
             return{
                 operation: state.operation+'1',
                 number: state.number+'1',
@@ -32,6 +38,11 @@ const reducer = (state: State, action: Action): State =>{
             }
         
         case '2':
+            if(state.result != ''){
+                state.operation = '';
+                state.number = '';
+                state.numbers = [];
+            }
             return{
                 operation: state.operation+'2',
                 number: state.number+'2',
@@ -41,6 +52,11 @@ const reducer = (state: State, action: Action): State =>{
             }
 
         case '3':
+            if(state.result != ''){
+                state.operation = '';
+                state.number = '';
+                state.numbers = [];
+            }
             return{
                 operation: state.operation+'3',
                 number: state.number+'3',
@@ -50,6 +66,11 @@ const reducer = (state: State, action: Action): State =>{
             }
 
         case '4':
+            if(state.result != ''){
+                state.operation = '';
+                state.number = '';
+                state.numbers = [];
+            }
             return{
                 operation: state.operation+'4',
                 number: state.number+'4',
@@ -59,6 +80,11 @@ const reducer = (state: State, action: Action): State =>{
             }
             
         case '5':
+            if(state.result != ''){
+                state.operation = '';
+                state.number = '';
+                state.numbers = [];
+            }
             return{
                 operation: state.operation+'5',
                 number: state.number+'5',
@@ -68,6 +94,11 @@ const reducer = (state: State, action: Action): State =>{
             }
         
         case '6':
+            if(state.result != ''){
+                state.operation = '';
+                state.number = '';
+                state.numbers = [];
+            }
             return{
                 operation: state.operation+'6',
                 number: state.number+'6',
@@ -77,6 +108,11 @@ const reducer = (state: State, action: Action): State =>{
             }
         
         case '7':
+            if(state.result != ''){
+                state.operation = '';
+                state.number = '';
+                state.numbers = [];
+            }
             return{
                 operation: state.operation+'7',
                 number: state.number+'7',
@@ -86,6 +122,11 @@ const reducer = (state: State, action: Action): State =>{
             }
         
         case '8':
+            if(state.result != ''){
+                state.operation = '';
+                state.number = '';
+                state.numbers = [];
+            }
             return{
                 operation: state.operation+'8',
                 number: state.number+'8',
@@ -95,6 +136,11 @@ const reducer = (state: State, action: Action): State =>{
             }
         
         case '9':
+            if(state.result != ''){
+                state.operation = '';
+                state.number = '';
+                state.numbers = [];
+            }
             return{
                 operation: state.operation+'9',
                 number: state.number+'9',
@@ -104,7 +150,11 @@ const reducer = (state: State, action: Action): State =>{
             }
             
         case '0':
-            
+            if(state.result != ''){
+                state.operation = '';
+                state.number = '';
+                state.numbers = [];
+            }
             return{
                 operation: state.operation+'0',
                 number: state.number+'0',
