@@ -335,38 +335,37 @@ function Screen(){
 
     return(
         <div className="w-auto place-content-center h-auto bg-black p-2">
-            <div className="w-80 h-auto">
+            <div className="w-80 h-auto" id="screen">
                 <div className="h-5 w-80 text-yellow-100">
                     {state.operation}
                 </div>
                 <div className="w-80 h-10 text-yellow-100">
-
                 </div>
-
             </div>
-            <div className="flex flex-wrap">
+            <div id="keyboard" className="flex flex-wrap text-sm mb-4">
                 <span className="flex flex-wrap w-60">
-                    <button className="w-40 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: 'AC' })}}>AC</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '/' })}}>/</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '7' })}}>7</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '8' })}}>8</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '9' })}}>9</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '4' })}}>4</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '5' })}}>5</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '6' })}}>6</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '1' })}}>1</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '2' })}}>2</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '3' })}}>3</button>
-                    <button className="w-40 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '0' })}}>0</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '.' })}}>.</button>
+                    <button className="w-40 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: 'AC' })}}>AC</button>
+                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '/' })}}>/</button>
+                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '7' })}}>7</button>
+                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '8' })}}>8</button>
+                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '9' })}}>9</button>
+                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '4' })}}>4</button>
+                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '5' })}}>5</button>
+                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '6' })}}>6</button>
+                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '1' })}}>1</button>
+                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '2' })}}>2</button>
+                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '3' })}}>3</button>
+                    <button className="w-40 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '0' })}}>0</button>
+                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '.' })}}>.</button>
                 </span>
                 <span className="flex flex-col w-20 flex-wrap">
-                    <button className="block w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '*' })}}>x</button>
-                    <button className="block w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '-' })}}>-</button>
-                    <button className="block w-20 h-16 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '+' })}}>+</button>
-                    <button className="block w-20 h-32 flex-none bg-white align-top border" onClick={() => {dispatch({ type: '=' })}}>=</button>
+                    <button className="block w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '*' })}}>x</button>
+                    <button className="block w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '-' })}}>-</button>
+                    <button className="block w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '+' })}}>+</button>
+                    <button className="block w-20 h-32 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '=' })}}>=</button>
                 </span>
             </div>
+            <div className="text-white text-center mt-3">By Hamilton Lumati</div>
         </div>
     )
 }
