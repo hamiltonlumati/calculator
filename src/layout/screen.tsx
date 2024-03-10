@@ -334,7 +334,7 @@ function Screen(){
 
     return(
         <div className="w-auto place-content-center h-auto bg-black p-2">
-            <div className="w-80 h-auto" id="screen">
+            <div className="w-80 h-auto" id="screen overflow-x-scroll">
                 <div className="h-5 w-80 text-yellow-100">
                     {state.operation}
                 </div>
