@@ -16,7 +16,7 @@ const reducer = (state: State, action: Action): State =>{
         case 'AC':
             return{
                 number: '',
-                operation: '',
+                operation: '0',
                 numbers: [],
                 operations: [0],
                 result: ''
@@ -27,6 +27,10 @@ const reducer = (state: State, action: Action): State =>{
                 state.operation = '';
                 state.number = '';
                 state.numbers = [];
+            }
+            if(state.operation == '0'){
+                state.operation = '';
+                state.number = '';
             }
             return{
                 operation: state.operation+'1',
@@ -42,6 +46,11 @@ const reducer = (state: State, action: Action): State =>{
                 state.number = '';
                 state.numbers = [];
             }
+            if(state.operation == '0'){
+                state.operation = '';
+                state.number = '';
+            }
+
             return{
                 operation: state.operation+'2',
                 number: state.number+'2',
@@ -56,6 +65,11 @@ const reducer = (state: State, action: Action): State =>{
                 state.number = '';
                 state.numbers = [];
             }
+            if(state.operation == '0'){
+                state.operation = '';
+                state.number = '';
+            }
+
             return{
                 operation: state.operation+'3',
                 number: state.number+'3',
@@ -70,6 +84,11 @@ const reducer = (state: State, action: Action): State =>{
                 state.number = '';
                 state.numbers = [];
             }
+            if(state.operation == '0'){
+                state.operation = '';
+                state.number = '';
+            }
+
             return{
                 operation: state.operation+'4',
                 number: state.number+'4',
@@ -84,6 +103,11 @@ const reducer = (state: State, action: Action): State =>{
                 state.number = '';
                 state.numbers = [];
             }
+            if(state.operation == '0'){
+                state.operation = '';
+                state.number = '';
+            }
+
             return{
                 operation: state.operation+'5',
                 number: state.number+'5',
@@ -97,6 +121,10 @@ const reducer = (state: State, action: Action): State =>{
                 state.operation = '';
                 state.number = '';
                 state.numbers = [];
+            }
+            if(state.operation == '0'){
+                state.operation = '';
+                state.number = '';
             }
             return{
                 operation: state.operation+'6',
@@ -112,6 +140,11 @@ const reducer = (state: State, action: Action): State =>{
                 state.number = '';
                 state.numbers = [];
             }
+            if(state.operation == '0'){
+                state.operation = '';
+                state.number = '';
+            }
+
             return{
                 operation: state.operation+'7',
                 number: state.number+'7',
@@ -126,6 +159,11 @@ const reducer = (state: State, action: Action): State =>{
                 state.number = '';
                 state.numbers = [];
             }
+            if(state.operation == '0'){
+                state.operation = '';
+                state.number = '';
+            }
+
             return{
                 operation: state.operation+'8',
                 number: state.number+'8',
@@ -140,6 +178,10 @@ const reducer = (state: State, action: Action): State =>{
                 state.number = '';
                 state.numbers = [];
             }
+            if(state.operation == '0'){
+                state.operation = '';
+            }
+
             return{
                 operation: state.operation+'9',
                 number: state.number+'9',
@@ -149,6 +191,15 @@ const reducer = (state: State, action: Action): State =>{
             }
             
         case '0':
+            if( state.operation[operationLenght-1] == '0'){
+                return{
+                    operation: state.operation,
+                    number: state.number,
+                    numbers: state.numbers,
+                    operations: state.operations,
+                    result: ''
+                }
+            }
             if(state.result != ''){
                 state.operation = '';
                 state.number = '';
@@ -328,13 +379,13 @@ const reducer = (state: State, action: Action): State =>{
 
 function Screen(){
     
-    const initialState: State = {operation: '', numbers: [], operations: [0], number: '', result: ''};
+    const initialState: State = {operation: '0', numbers: [], operations: [0], number: '', result: ''};
 
     const [state, dispatch] = useReducer(reducer, initialState);
 
     return(
         <div className="w-auto place-content-center h-auto bg-black p-2">
-            <div className="w-80 h-auto overflow-x-auto" id="screen">
+            <div className="w-80 h-auto overflow-x-auto" id="display">
                 <div className="h-5 w-80 text-yellow-100">
                     {state.operation}
                 </div>
@@ -343,25 +394,25 @@ function Screen(){
             </div>
             <div id="keyboard" className="flex flex-wrap text-sm mb-4">
                 <span className="flex flex-wrap w-60">
-                    <button className="w-40 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: 'AC' })}}>AC</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '/' })}}>/</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '7' })}}>7</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '8' })}}>8</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '9' })}}>9</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '4' })}}>4</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '5' })}}>5</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '6' })}}>6</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '1' })}}>1</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '2' })}}>2</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '3' })}}>3</button>
-                    <button className="w-40 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '0' })}}>0</button>
-                    <button className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '.' })}}>.</button>
+                    <button id="clear" className="w-40 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: 'AC' })}}>AC</button>
+                    <button id="divide" className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '/' })}}>/</button>
+                    <button id="seven" className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '7' })}}>7</button>
+                    <button id="eight" className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '8' })}}>8</button>
+                    <button id="nine" className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '9' })}}>9</button>
+                    <button id="four" className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '4' })}}>4</button>
+                    <button id="five" className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '5' })}}>5</button>
+                    <button id="six" className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '6' })}}>6</button>
+                    <button id="one" className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '1' })}}>1</button>
+                    <button id="two" className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '2' })}}>2</button>
+                    <button id="three" className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '3' })}}>3</button>
+                    <button id="zero" className="w-40 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '0' })}}>0</button>
+                    <button id="decimal" className="w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '.' })}}>.</button>
                 </span>
                 <span className="flex flex-col w-20 flex-wrap">
-                    <button className="block w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '*' })}}>x</button>
-                    <button className="block w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '-' })}}>-</button>
-                    <button className="block w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '+' })}}>+</button>
-                    <button className="block w-20 h-32 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '=' })}}>=</button>
+                    <button id="multiply" className="block w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '*' })}}>x</button>
+                    <button id="subtract" className="block w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '-' })}}>-</button>
+                    <button id="add" className="block w-20 h-16 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '+' })}}>+</button>
+                    <button id="equals" className="block w-20 h-32 flex-none bg-white align-top border hover:border-black" onClick={() => {dispatch({ type: '=' })}}>=</button>
                 </span>
             </div>
             <div className="text-white text-center mt-3">By Hamilton Lumati</div>
