@@ -4,7 +4,8 @@ interface State{
     operation: string,
     numbers: number[],
     operations: number[],
-    number: string
+    number: string,
+    result: string
 }
 
 type Action = {type: 'AC'} | {type: '='} | {type: '1'} | {type: '2'} | {type: '3'} | {type: '4'} | {type: '5'} | {type: '6'} | {type: '7'} | {type: '8'} | {type: '9'} | {type: '0'} | {type: '+'} | {type: '*'} | {type: '/'} | {type: '-'} | {type: '.'};
@@ -18,6 +19,7 @@ const reducer = (state: State, action: Action): State =>{
                 operation: '',
                 numbers: [],
                 operations: [0],
+                result: ''
             }
 
         case '1':
@@ -25,7 +27,8 @@ const reducer = (state: State, action: Action): State =>{
                 operation: state.operation+'1',
                 number: state.number+'1',
                 numbers: state.numbers,
-                operations: state.operations
+                operations: state.operations,
+                result: ''
             }
         
         case '2':
@@ -33,7 +36,8 @@ const reducer = (state: State, action: Action): State =>{
                 operation: state.operation+'2',
                 number: state.number+'2',
                 numbers: state.numbers,
-                operations: state.operations
+                operations: state.operations,
+                result: ''
             }
 
         case '3':
@@ -41,7 +45,8 @@ const reducer = (state: State, action: Action): State =>{
                 operation: state.operation+'3',
                 number: state.number+'3',
                 numbers: state.numbers,
-                operations: state.operations
+                operations: state.operations,
+                result: ''
             }
 
         case '4':
@@ -49,7 +54,8 @@ const reducer = (state: State, action: Action): State =>{
                 operation: state.operation+'4',
                 number: state.number+'4',
                 numbers: state.numbers,
-                operations: state.operations
+                operations: state.operations,
+                result: ''
             }
             
         case '5':
@@ -57,7 +63,8 @@ const reducer = (state: State, action: Action): State =>{
                 operation: state.operation+'5',
                 number: state.number+'5',
                 numbers: state.numbers,
-                operations: state.operations
+                operations: state.operations,
+                result: ''
             }
         
         case '6':
@@ -65,7 +72,8 @@ const reducer = (state: State, action: Action): State =>{
                 operation: state.operation+'6',
                 number: state.number+'6',
                 numbers: state.numbers,
-                operations: state.operations
+                operations: state.operations,
+                result: ''
             }
         
         case '7':
@@ -73,7 +81,8 @@ const reducer = (state: State, action: Action): State =>{
                 operation: state.operation+'7',
                 number: state.number+'7',
                 numbers: state.numbers,
-                operations: state.operations
+                operations: state.operations,
+                result: ''
             }
         
         case '8':
@@ -81,7 +90,8 @@ const reducer = (state: State, action: Action): State =>{
                 operation: state.operation+'8',
                 number: state.number+'8',
                 numbers: state.numbers,
-                operations: state.operations
+                operations: state.operations,
+                result: ''
             }
         
         case '9':
@@ -89,7 +99,8 @@ const reducer = (state: State, action: Action): State =>{
                 operation: state.operation+'9',
                 number: state.number+'9',
                 numbers: state.numbers,
-                operations: state.operations
+                operations: state.operations,
+                result: ''
             }
             
         case '0':
@@ -98,7 +109,8 @@ const reducer = (state: State, action: Action): State =>{
                 operation: state.operation+'0',
                 number: state.number+'0',
                 numbers: state.numbers,
-                operations: state.operations
+                operations: state.operations,
+                result: ''
             }
 
         case '+':
@@ -107,16 +119,23 @@ const reducer = (state: State, action: Action): State =>{
                     operation: state.operation,
                     number: state.number,
                     numbers: state.numbers,
-                    operations: state.operations
+                    operations: state.operations,
+                    result: ''
                 }
             }
-            state.operations.push(0);
-            state.numbers.push(parseFloat(state.number));
+            if(state.result != ''){
+                state.operation = state.result;
+                state.operations.push(0);
+            }else if(state.operation.length > 0){
+                state.operations.push(0);
+                state.numbers.push(parseFloat(state.number));    
+            }
             return{
                 operation: state.operation+'+',
                 number: '+',
                 numbers: state.numbers,
-                operations: state.operations
+                operations: state.operations,
+                result: ''
             }
         
         case '-':
@@ -125,18 +144,23 @@ const reducer = (state: State, action: Action): State =>{
                     operation: state.operation,
                     number: state.number,
                     numbers: state.numbers,
-                    operations: state.operations
+                    operations: state.operations,
+                    result: ''
                 }
             }
-            state.operations.push(0);
-            state.numbers.push(parseFloat(state.number));
-            console.log(state.numbers);
-            console.log(state.number);
+            if(state.result != ''){
+                state.operation = state.result;
+                state.operations.push(0);
+            }else if(state.operation.length > 0){
+                state.operations.push(0);
+                state.numbers.push(parseFloat(state.number));    
+            }
             return{
                 operation: state.operation+'-',
                 number: '-',
                 numbers: state.numbers,
-                operations: state.operations
+                operations: state.operations,
+                result: ''
             }
 
         case '*':
@@ -145,16 +169,24 @@ const reducer = (state: State, action: Action): State =>{
                     operation: state.operation,
                     number: state.number,
                     numbers: state.numbers,
-                    operations: state.operations
+                    operations: state.operations,
+                    result: ''
                 }
             }
-            state.operations.push(1);
-            state.numbers.push(parseFloat(state.number));
+
+            if(state.result != ''){
+                state.operation = state.result;
+                state.operations.push(1);
+            }else if(state.operation.length > 0){
+                state.operations.push(1);
+                state.numbers.push(parseFloat(state.number));    
+            }
             return{
                 operation: state.operation+'*',
                 numbers: state.numbers,
                 number: '',
-                operations: state.operations
+                operations: state.operations,
+                result: ''
             }
 
         case '/':
@@ -163,16 +195,23 @@ const reducer = (state: State, action: Action): State =>{
                     operation: state.operation,
                     number: state.number,
                     numbers: state.numbers,
-                    operations: state.operations
+                    operations: state.operations,
+                    result: ''
                 }
             }
-            state.operations.push(2);
-            state.numbers.push(parseFloat(state.number));
+            if(state.result != ''){
+                state.operation = state.result;
+                state.operations.push(0);
+            }else if(state.operation.length > 0){
+                state.operations.push(0);
+                state.numbers.push(parseFloat(state.number));    
+            }
             return{
                 operation: state.operation+'/',
                 number: '',
                 numbers: state.numbers,
-                operations: state.operations
+                operations: state.operations,
+                result: ''
             }
         
         case '.':
@@ -181,14 +220,16 @@ const reducer = (state: State, action: Action): State =>{
                     operation: state.operation,
                     number: state.number,
                     numbers: state.numbers,
-                    operations: state.operations
+                    operations: state.operations,
+                    result: ''
                 }
             }
             return{
                 operation: state.operation+'.',
                 number: state.number+'.',
                 numbers: state.numbers,
-                operations: state.operations
+                operations: state.operations,
+                result: ''
             }
 
         case '=':
@@ -229,7 +270,8 @@ const reducer = (state: State, action: Action): State =>{
                 operation: state.operation+'='+state.numbers[0],
                 number: state.number,
                 numbers: state.numbers,
-                operations: state.operations
+                operations: [0],
+                result: String(state.numbers[0])
             }
         
     }
@@ -237,7 +279,7 @@ const reducer = (state: State, action: Action): State =>{
 
 function Screen(){
     
-    const initialState: State = {operation: '', numbers: [], operations: [0], number: ''};
+    const initialState: State = {operation: '', numbers: [], operations: [0], number: '', result: ''};
 
     const [state, dispatch] = useReducer(reducer, initialState);
 
