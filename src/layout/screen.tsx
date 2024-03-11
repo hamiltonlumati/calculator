@@ -334,7 +334,6 @@ const reducer = (state: State, action: Action): State =>{
 
         case '=':
             state.numbers.push(parseFloat(state.number));
-            console.log(state.numbers);
             let auxiliar: number = 0;
             for(let i = 0; i<state.operations.length; i++){
                 switch (state.operations[i]){
@@ -357,7 +356,6 @@ const reducer = (state: State, action: Action): State =>{
                 }
             }
             for(let i = 0; i<state.numbers.length; i++){
-                console.log(state.numbers);
                 if(state.numbers.length > 1){
                     auxiliar = state.numbers[i] + state.numbers[i+1];
                     state.numbers[i] = auxiliar;
